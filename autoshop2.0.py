@@ -48,10 +48,8 @@ ADMIN_USER_ID = int(os.environ.get('ADMIN_USER_ID', 8295467733))
 
 # Détection de l'environnement Render
 if os.environ.get('RENDER'):
-    # Sur Render, utiliser /data (dossier persistant)
-    DOSSIER = Path("/data")
+    DOSSIER = Path("/opt/render/project/src")
 else:
-    # En local, utiliser le chemin Windows
     DOSSIER = Path("C:/Users/guidu/Desktop/autoshop2.0")
 
 # Création des sous-dossiers
