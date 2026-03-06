@@ -11,19 +11,36 @@ import random
 import string
 import sys
 import io
+import asyncio
 from pathlib import Path
 from datetime import datetime, timedelta
 from collections import defaultdict
 import logging
 from types import SimpleNamespace
+from aiohttp import web
+
+# === SERVEUR HTTP POUR RENDER ===
+async def health_check(request):
+    return web.Response(text="OK", status=200)
+
+async def start_http_server():
+    app_web = web.Application()
+    app_web.router.add_get('/health', health_check)
+    runner = web.AppRunner(app_web)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', 10000)
+    await site.start()
+    print("✅ Serveur HTTP démarré sur le port 10000")
+
+# Lancer le serveur en arrière-plan
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+loop.create_task(start_http_server())
 
 # === PRINTS DE DEBUG ===
 print("="*50)
-print("BOT DÉMARRAGE ÉTAPE 1")
+print("🚀 BOT DÉMARRAGE ÉTAPE 1")
 print("="*50)
-sys.stdout.flush()
-
-print(f"Test d'écriture dans les logs")
 sys.stdout.flush()
 
 # === CORRECTION ENCODAGE WINDOWS ===
@@ -36,6 +53,7 @@ from telegram.ext import (
     ApplicationBuilder, CommandHandler, MessageHandler,
     CallbackQueryHandler, filters, ContextTypes
 )
+
 from fpdf import FPDF
 
 # =========================
