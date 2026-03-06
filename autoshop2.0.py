@@ -525,7 +525,7 @@ class AutoShop:
             logger.error(f"Erreur parse ligne: {e}")
             return None
     
-    def scanner(self, force=False):
+def scanner(self, force=False):
     """Scanne tous les fichiers avec cache"""
     
     # Si déjà scanné et pas forcé, on utilise le cache
@@ -590,6 +590,7 @@ class AutoShop:
     self.scanned = True
     self.sauver()
     return {'fichiers': len(fichiers), 'lignes': total_lignes, 'valides': valides}
+
 
 # =========================
 # PRIX CRYPTO
