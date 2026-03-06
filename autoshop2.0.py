@@ -1963,31 +1963,30 @@ def test_apis():
 
 def main():
     logger.info("🚀 Démarrage du bot...")
-    
+
     test_apis()
     shop.scanner()
-    
+
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# === TEST DE CONNEXION ===
-try:
-    bot_info = app.bot.get_me()
-    print(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
-    logger.info(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
-except Exception as e:
-    print(f"❌ ERREUR DE CONNEXION : {e}")
-    logger.error(f"❌ ERREUR DE CONNEXION : {e}")
-    sys.exit(1)
+    # === TEST DE CONNEXION ===
+    try:
+        bot_info = app.bot.get_me()
+        print(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
+        logger.info(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
+    except Exception as e:
+        print(f"❌ ERREUR DE CONNEXION : {e}")
+        logger.error(f"❌ ERREUR DE CONNEXION : {e}")
+        sys.exit(1)
 
-    
     verif.set_app(app)
     verif.demarrer()
-    
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("admin", admin))
     app.add_handler(CallbackQueryHandler(button))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    
+
     logger.info("✅ Bot prêt - Version Render - Tous les séparateurs")
     app.run_polling()
 
