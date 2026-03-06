@@ -1969,7 +1969,7 @@ def main():
     test_apis()
     shop.scanner()
     
-    app = ApplicationBuilder().token(BOT_TOKEN).build()app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
 
 # === TEST DE CONNEXION ===
 try:
