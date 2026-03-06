@@ -1,0 +1,1 @@
+web: python autoshop2.0.py

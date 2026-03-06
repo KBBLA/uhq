@@ -1,0 +1,12 @@
+# Fichier de données volumineux
+data/clients.json
+logs/bot.log
+temp/
+
+# Fichiers python cache
+__pycache__/
+*.pyc
+
+# Environement virtuel
+venv/
+env/
