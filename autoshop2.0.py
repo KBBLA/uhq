@@ -1960,7 +1960,6 @@ def test_apis():
 # =========================
 # MAIN
 # =========================
-
 def main():
     logger.info("🚀 Démarrage du bot...")
 
@@ -1968,16 +1967,6 @@ def main():
     shop.scanner()
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-
-    # === TEST DE CONNEXION ===
-    try:
-        bot_info = app.bot.get_me()
-        print(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
-        logger.info(f"✅ Connecté à Telegram en tant que @{bot_info.username}")
-    except Exception as e:
-        print(f"❌ ERREUR DE CONNEXION : {e}")
-        logger.error(f"❌ ERREUR DE CONNEXION : {e}")
-        sys.exit(1)
 
     verif.set_app(app)
     verif.demarrer()
