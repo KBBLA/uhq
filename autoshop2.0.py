@@ -341,6 +341,7 @@ class AutoShop:
         self.users = {}
         self.transactions = []
         self.prix = PRIX_PAR_DEFAUT.copy()
+        self.scanned= False
         self.charger()
     
     def charger(self):
@@ -524,85 +525,71 @@ class AutoShop:
             logger.error(f"Erreur parse ligne: {e}")
             return None
     
-    def scanner(self):
-        """Scanne tous les fichiers avec logs détaillés"""
-        logger.info("="*50)
-        logger.info("SCAN DU DOSSIER")
-        logger.info("="*50)
-        
-        self.clients = {}
-        self.valides = {}
-        
-        fichiers = list(DOSSIER.glob("*.txt")) + list(DOSSIER.glob("*.csv")) + \
-                   list(DOSSIER.glob("*.TXT")) + list(DOSSIER.glob("*.CSV"))
-        
-        logger.info(f"Dossier: {DOSSIER}")
-        logger.info(f"Fichiers trouvés: {len(fichiers)}")
-        
-        if not fichiers:
-            logger.warning("⚠️ AUCUN FICHIER TROUVÉ!")
-            self.sauver()
-            return {'fichiers': 0, 'lignes': 0, 'valides': 0}
-        
-        total_lignes = 0
-        valides = 0
-        
-        for fichier in fichiers:
-            try:
-                logger.info(f"Lecture de {fichier.name}...")
-                
-                with open(fichier, 'r', encoding='utf-8', errors='ignore') as f:
-                    lignes = f.readlines()
-                
-                logger.info(f"  - {len(lignes)} lignes")
-                
-                for i, ligne in enumerate(lignes):
-                    total_lignes += 1
-                    client = self.parse_ligne(ligne)
-                    
-                    if client:
-                        self.clients[client['id']] = client
-                        if client.get('valide'):
-                            self.valides[client['id']] = client
-                            valides += 1
-                    
-                    if i > 0 and i % 10000 == 0:
-                        logger.info(f"    ... {i} lignes traitées")
-                
-                logger.info(f"  ✅ {valides} clients valides dans ce fichier")
-                
-            except Exception as e:
-                logger.error(f"Erreur lecture {fichier}: {e}")
-        
-        logger.info("="*50)
-        logger.info(f"SCAN TERMINÉ")
-        logger.info(f"Total lignes: {total_lignes}")
-        logger.info(f"Total valides: {valides}")
-        logger.info("="*50)
-        
-        self.sauver()
-        return {'fichiers': len(fichiers), 'lignes': total_lignes, 'valides': valides}
+    def scanner(self, force=False):
+    """Scanne tous les fichiers avec cache"""
     
-    def stats(self):
-        stats = {
-            'dispos': len(self.valides) - len(self.utilises),
-            'banques': defaultdict(int),
-            'regions': defaultdict(int),
-            'operateurs': defaultdict(int),
-            'domaines': defaultdict(int)
-        }
-        
-        for cid, c in self.valides.items():
-            if cid in self.utilises:
-                continue
-            stats['banques'][c['banque']] += 1
-            stats['regions'][c['region']] += 1
-            stats['operateurs'][c['operateur']] += 1
-            stats['domaines'][c['domaine']] += 1
-        
-        return stats
-
-shop = AutoShop()
+    # Si déjà scanné et pas forcé, on utilise le cache
+    if self.scanned and not force:
+        logger.info("📦 Utilisation du cache - Scan déjà effectué")
+        return {'fichiers': len(self.clients), 'lignes': 0, 'valides': len(self.valides)}
+    
+    logger.info("="*50)
+    logger.info("SCAN DU DOSSIER")
+    logger.info("="*50)
+    
+    self.clients = {}
+    self.valides = {}
+    
+    fichiers = list(DOSSIER.glob("*.txt")) + list(DOSSIER.glob("*.csv")) + \
+               list(DOSSIER.glob("*.TXT")) + list(DOSSIER.glob("*.CSV"))
+    
+    logger.info(f"Dossier: {DOSSIER}")
+    logger.info(f"Fichiers trouvés: {len(fichiers)}")
+    
+    if not fichiers:
+        logger.warning("⚠️ AUCUN FICHIER TROUVÉ!")
+        self.sauver()
+        return {'fichiers': 0, 'lignes': 0, 'valides': 0}
+    
+    total_lignes = 0
+    valides = 0
+    
+    for fichier in fichiers:
+        try:
+            logger.info(f"Lecture de {fichier.name}...")
+            
+            with open(fichier, 'r', encoding='utf-8', errors='ignore') as f:
+                lignes = f.readlines()
+            
+            logger.info(f"  - {len(lignes)} lignes")
+            
+            for i, ligne in enumerate(lignes):
+                total_lignes += 1
+                client = self.parse_ligne(ligne)
+                
+                if client:
+                    self.clients[client['id']] = client
+                    if client.get('valide'):
+                        self.valides[client['id']] = client
+                        valides += 1
+                
+                if i > 0 and i % 10000 == 0:
+                    logger.info(f"    ... {i} lignes traitées")
+            
+            logger.info(f"  ✅ {valides} clients valides dans ce fichier")
+            
+        except Exception as e:
+            logger.error(f"Erreur lecture {fichier}: {e}")
+    
+    logger.info("="*50)
+    logger.info(f"SCAN TERMINÉ")
+    logger.info(f"Total lignes: {total_lignes}")
+    logger.info(f"Total valides: {valides}")
+    logger.info("="*50)
+    
+    self.scanned = True
+    self.sauver()
+    return {'fichiers': len(fichiers), 'lignes': total_lignes, 'valides': valides}
 
 # =========================
 # PRIX CRYPTO
@@ -1982,7 +1969,7 @@ def main():
     logger.info("🚀 Démarrage du bot...")
 
     test_apis()
-    shop.scanner()
+    shop.scanner(force=true)
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
