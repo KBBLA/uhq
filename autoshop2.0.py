@@ -89,9 +89,9 @@ PRIX_PAR_DEFAUT = {
 }
 
 CRYPTO_CONFIG = {
-    'ETH': {'adresse': '0xVotreAdresseEthereum', 'decimals': 18},
-    'SOL': {'adresse': 'VotreAdresseSolana', 'decimals': 9},
-    'BTC': {'adresse': '1VotreAdresseBitcoin', 'decimals': 8}
+    'ETH': {'adresse': '0xF8b46473e778406d1F9911932eaa423E028fA492', 'decimals': 18},
+    'SOL': {'adresse': 'CJGz8F4SHzvVhZPr9k22v3rwgzMndQ5J5ssucND29B4V', 'decimals': 9},
+    'BTC': {'adresse': 'bc1qyawv8j0mpxywqct8tntt96mqv8wnww4fxu0yg0', 'decimals': 8}
 }
 
 # === LOGGING ===
