@@ -131,259 +131,94 @@ REGIONS = {
     '84': 'PACA', '971': 'DOM', '972': 'DOM', '973': 'DOM', '974': 'DOM', '976': 'DOM'
 }
 
-BANQUES_COMPLET = {
-    # ===== BANQUES NATIONALES =====
+BANQUES = {
+    # BNP Paribas
     'BNPA': 'BNP Paribas', 'BNP': 'BNP Paribas', 'BNPAFRPP': 'BNP Paribas',
-    'BNPAFRPPXXX': 'BNP Paribas', '30004': 'BNP Paribas', 'BNPAP': 'BNP Paribas',
-    'BNPAFRP': 'BNP Paribas', 'BNPAFR': 'BNP Paribas',
+    'BNPAFRPPXXX': 'BNP Paribas', '30004': 'BNP Paribas',
     
-    'AGRI': 'Crédit Agricole', 'CA': 'Crédit Agricole', 'AGRIFRPP': 'Crédit Agricole',
-    'AGRIFRPPXXX': 'Crédit Agricole', '30006': 'Crédit Agricole', 'AGRIFR': 'Crédit Agricole',
-    'AGRIC': 'Crédit Agricole', 'CAFRPP': 'Crédit Agricole', '18706': 'Crédit Agricole',
+    # Crédit Agricole
+    'AGRI': 'Crédit Agricole', 'AGRIFRPP': 'Crédit Agricole',
+    'AGRIFRPPXXX': 'Crédit Agricole', '30006': 'Crédit Agricole',
+    'CA': 'Crédit Agricole', 'CAFR': 'Crédit Agricole',
     
-    'SOGE': 'Société Générale', 'SG': 'Société Générale', 'SOGEFRPP': 'Société Générale',
-    'SOGEFRPPXXX': 'Société Générale', '30003': 'Société Générale', 'SOGEFR': 'Société Générale',
+    # Société Générale
+    'SOGE': 'Société Générale', 'SOGEFRPP': 'Société Générale',
+    'SOGEFRPPXXX': 'Société Générale', '30003': 'Société Générale',
+    'SG': 'Société Générale',
     
-    'CMC': 'Crédit Mutuel', 'CM': 'Crédit Mutuel', 'CMCIFR2A': 'Crédit Mutuel',
-    'CMCIFR2AXXX': 'Crédit Mutuel', '30002': 'Crédit Mutuel', 'CMUT': 'Crédit Mutuel',
-    'CCOP': 'Crédit Mutuel', 'CMMC': 'Crédit Mutuel',
+    # Crédit Mutuel
+    'CMC': 'Crédit Mutuel', 'CMCIFR2A': 'Crédit Mutuel',
+    'CMCIFR2AXXX': 'Crédit Mutuel', '30002': 'Crédit Mutuel',
+    'CM': 'Crédit Mutuel', 'CMUT': 'Crédit Mutuel',
     
+    # CIC
     'CIC': 'CIC', 'CICFRPP': 'CIC', 'CMCIC': 'CIC', '30066': 'CIC',
-    'CICE': 'CIC', 'CICO': 'CIC', 'CICN': 'CIC', 'CICS': 'CIC',
     
-    'LBP': 'La Banque Postale', 'BAPO': 'La Banque Postale', 'LBPFRPP': 'La Banque Postale',
-    'LBPFRPPXXX': 'La Banque Postale', '30041': 'La Banque Postale', 'LBPCR': 'La Banque Postale',
+    # La Banque Postale
+    'LBP': 'La Banque Postale', 'LBPFRPP': 'La Banque Postale',
+    'LBPFRPPXXX': 'La Banque Postale', '30041': 'La Banque Postale',
+    'BAPO': 'La Banque Postale',
     
+    # HSBC
     'HSBC': 'HSBC', 'HSBCFRPP': 'HSBC', 'HSBCFRPPXXX': 'HSBC', '30056': 'HSBC',
     
-    'BOUY': 'Boursorama', 'BOURS': 'Boursorama', 'BOUYFRPP': 'Boursorama',
-    'BUX': 'Boursorama', '30086': 'Boursorama',
+    # Boursorama
+    'BOUY': 'Boursorama', 'BOUYFRPP': 'Boursorama',
+    'BOURS': 'Boursorama', '30086': 'Boursorama',
     
-    'AXA': 'AXA Banque', 'AXAB': 'AXA Banque', 'AXAFRPP': 'AXA Banque', '30088': 'AXA Banque',
+    # AXA Banque
+    'AXA': 'AXA Banque', 'AXAFRPP': 'AXA Banque', '30088': 'AXA Banque',
     
-    'ING': 'ING Direct', 'INGB': 'ING Direct', 'INGFRPP': 'ING Direct', '30076': 'ING Direct',
+    # ING Direct
+    'ING': 'ING Direct', 'INGFRPP': 'ING Direct', '30076': 'ING Direct',
     
-    'FORT': 'Fortuneo', 'FORTUNEO': 'Fortuneo', 'FORTFRPP': 'Fortuneo', '30198': 'Fortuneo',
+    # Fortuneo
+    'FORT': 'Fortuneo', 'FORTFRPP': 'Fortuneo',
+    'FORTUNEO': 'Fortuneo', '30198': 'Fortuneo',
     
+    # Hello Bank
     'HELL': 'Hello Bank', 'HELLO': 'Hello Bank',
     
+    # Monabanq
     'MONA': 'Monabanq', 'MONABANQ': 'Monabanq',
     
+    # Orange Bank
     'ORAN': 'Orange Bank', 'ORANGE': 'Orange Bank',
     
+    # Revolut
     'REVO': 'Revolut', 'REVOLT': 'Revolut', 'REVOFRPP': 'Revolut',
     
+    # N26
     'N26': 'N26', 'N26FRPP': 'N26',
     
+    # Banque Populaire
+    'BP': 'Banque Populaire', 'BPCE': 'Banque Populaire',
+    'BPCEFRPP': 'Banque Populaire', 'BPCEFRPPXXX': 'Banque Populaire',
+    'CCBP': 'Banque Populaire', '10107': 'Banque Populaire',
+    'BPAY': 'Banque Populaire',
+    
+    # Caisse d'Epargne
+    'CE': 'Caisse d\'Epargne', 'CEP': 'Caisse d\'Epargne',
+    'CEPA': 'Caisse d\'Epargne', 'CEPAFRPP': 'Caisse d\'Epargne',
+    '11207': 'Caisse d\'Epargne',
+    
+    # LCL
+    'LCL': 'LCL', 'LCLFRPP': 'LCL', 'LCLFRPPXXX': 'LCL',
+    'CRLY': 'LCL',
+    
+    # Crédit du Nord
+    'CDN': 'Crédit du Nord', 'CREDINORD': 'Crédit du Nord',
+    'NOR': 'Crédit du Nord', '30007': 'Crédit du Nord',
+    
+    # Nickel
     'NICK': 'Nickel', 'NICKEL': 'Nickel',
     
-    # ===== BANQUES POPULAIRES =====
-    'BP': 'Banque Populaire', 'BPCE': 'Banque Populaire', 'BPCEFRPP': 'Banque Populaire',
-    'BPCEFRPPXXX': 'Banque Populaire', 'CCBP': 'Banque Populaire', '10107': 'Banque Populaire',
-    'BPAY': 'Banque Populaire', 'BPAL': 'Banque Populaire', 'BPAU': 'Banque Populaire',
-    'BPAX': 'Banque Populaire',
+    # Banques étrangères
+    'BARC': 'Barclays', 'BARCFRPP': 'Barclays',
+    'DEUT': 'Deutsche Bank', 'DEUTFRPP': 'Deutsche Bank',
     
-    'BRED': 'BRED', 'BREDFRPP': 'BRED',
-    'CASD': 'Casden Banque Populaire', 'CASDEN': 'Casden Banque Populaire',
-    
-    # ===== CAISSES D'EPARGNE =====
-    'CE': 'Caisse d\'Epargne', 'CEP': 'Caisse d\'Epargne', 'CEPA': 'Caisse d\'Epargne',
-    'CEPAFRPP': 'Caisse d\'Epargne', '11207': 'Caisse d\'Epargne', 'CEFR': 'Caisse d\'Epargne',
-    'CEIDF': 'Caisse d\'Epargne IDF', 'CEARA': 'Caisse d\'Epargne ARA',
-    'CEPAC': 'Caisse d\'Epargne PACA', 'CENOR': 'Caisse d\'Epargne Normandie',
-    'CEBFC': 'Caisse d\'Epargne BFC', 'CEBRE': 'Caisse d\'Epargne Bretagne',
-    'CECVL': 'Caisse d\'Epargne CVL', 'CEGE': 'Caisse d\'Epargne Grand Est',
-    'CEHDF': 'Caisse d\'Epargne HDF', 'CENA': 'Caisse d\'Epargne NAQ',
-    'CEPDL': 'Caisse d\'Epargne PDL',
-    
-    # ===== LCL =====
-    'LCL': 'LCL', 'LCLFRPP': 'LCL', 'LCLFRPPXXX': 'LCL', 'CRLY': 'LCL',
-    'LCLPAR': 'LCL Paris', 'LCLPRO': 'LCL Pro',
-    
-    # ===== CRÉDIT DU NORD =====
-    'CDN': 'Crédit du Nord', 'NOR': 'Crédit du Nord', 'CREDINORD': 'Crédit du Nord',
-    '30007': 'Crédit du Nord', 'CDNFRPP': 'Crédit du Nord',
-    
-    # ===== BANQUES RÉGIONALES =====
-    'CHAIX': 'Banque Chaix',
-    'CTOIS': 'Banque Courtois',
-    'KOLB': 'Banque Kolb',
-    'LAYD': 'Banque Laydernier',
-    'NEUF': 'Banque de Neuflize',
-    'BRA': 'Banque Rhône-Alpes',
-    'TARN': 'Banque Tarneaud',
-    'TRANS': 'Banque Transatlantique',
-    'BQUE': 'Banque de Savoie',
-    'BQMC': 'Banque Marze',
-    'BRS': 'Banque Rhône-Alpes Sud',
-    'BCH': 'Banque Chalus',
-    'BGR': 'Banque Graniou',
-    'BJR': 'Banque Jazz',
-    'BTL': 'Banque Thaler',
-    'BMR': 'Banque Marze',
-    'BRH': 'Banque Rhône-Alpes',
-    'BTO': 'Banque de Touraine',
-    'BLO': 'Banque de Loire',
-    'BLY': 'Banque Lyonnaise',
-    'BST': 'Banque de Strasbourg',
-    'BLI': 'Banque de Lille',
-    'BMA': 'Banque de Marseille',
-    'BNA': 'Banque Nanceienne',
-    
-    # ===== BANQUES PRIVÉES =====
-    'RIVA': 'Riva Bank',
-    'BORD': 'Banque de Bordeaux',
-    'BTOU': 'Banque de Touraine',
-    'BLOI': 'Banque de Loire',
-    'BLYO': 'Banque Lyonnaise',
-    'BSTR': 'Banque de Strasbourg',
-    'BLIL': 'Banque de Lille',
-    'BMAR': 'Banque de Marseille',
-    'BNAN': 'Banque Nanceienne',
-    'BPAT': 'Banque Patrimoine',
-    'BPR': 'Banque Privée 1818',
-    'BPSG': 'Banque Privée Saint-Germain',
-    
-    # ===== BANQUES D'INVESTISSEMENT =====
-    'NATX': 'Natixis', 'NATIXIS': 'Natixis',
-    'BP2S': 'BP2S', 'BPSS': 'BPSS',
-    'CALY': 'Calyon', 'CLYP': 'Calyon',
-    'CAIS': 'Caisse des Dépôts',
-    'CDC': 'Caisse des Dépôts',
-    
-    # ===== BANQUES ÉTRANGÈRES EN FRANCE =====
-    'BARCL': 'Barclays France', 'BARC': 'Barclays France',
-    'DEUT': 'Deutsche Bank France', 'DBFR': 'Deutsche Bank France',
-    'GOLD': 'Goldman Sachs France',
-    'MORG': 'Morgan Stanley France',
-    'UBS': 'UBS France', 'UBSW': 'UBS France',
-    'JPMC': 'JP Morgan France',
-    'CACE': 'Caceis Bank',
-    'ODDO': 'Oddo BHF', 'ODDOFRPP': 'Oddo BHF',
-    'ROTH': 'Rothschild & Co',
-    'LAZ': 'Lazard Frères',
-    'CIC': 'CIC',
-    
-    # ===== BANQUES EN LIGNE =====
-    'FORTU': 'Fortuneo',
-    'BINC': 'BforBank', 'BFOR': 'BforBank',
-    'MAX': 'Max', 'MAXX': 'Max',
-    'QNTO': 'Qonto', 'QONT': 'Qonto',
-    'SHFT': 'Shine', 'SHIN': 'Shine',
-    'ANDB': 'Anytime', 'ANY': 'Anytime',
-    'WELT': 'Welth', 'WLTH': 'Welth',
-    'MONE': 'MoneyVox',
-    'TRAD': 'Trade Republic',
-    'BINB': 'Binance',
-    
-    # ===== BANQUES POSTALES =====
-    'LBPCR': 'La Banque Postale Crédit',
-    'LBPCO': 'La Banque Postale Crédit',
-    'LBPCB': 'La Banque Postale Crédit',
-    
-    # ===== CRÉDITS MUNICIPAUX =====
-    'CMUN': 'Crédit Municipal de Paris',
-    'CMP': 'Crédit Municipal de Paris',
-    'CMBO': 'Crédit Municipal de Bordeaux',
-    'CMLY': 'Crédit Municipal de Lyon',
-    'CMNI': 'Crédit Municipal de Nîmes',
-    'CMTL': 'Crédit Municipal de Toulouse',
-    'CMLI': 'Crédit Municipal de Lille',
-    'CMST': 'Crédit Municipal de Strasbourg',
-    
-    # ===== CAISSES DE CRÉDIT MUTUEL =====
-    'CMAR': 'Crédit Mutuel Arkea',
-    'CMBR': 'Crédit Mutuel Bretagne',
-    'CMCE': 'Crédit Mutuel Centre',
-    'CMSO': 'Crédit Mutuel Sud-Ouest',
-    'CMOC': 'Crédit Mutuel Océan',
-    'CMMC': 'Crédit Mutuel Massif Central',
-    'CMAN': 'Crédit Mutuel Anjou',
-    'CMM': 'Crédit Mutuel Maine',
-    'ARKEA': 'Crédit Mutuel Arkea',
-    'FEDERAL': 'Banque Fédérale du Crédit Mutuel',
-    'BECM': 'Banque Européenne du Crédit Mutuel',
-    'CMNE': 'Crédit Mutuel Nord Europe',
-    
-    # ===== BANQUES DE DÉTAIL =====
-    'CARREF': 'Carrefour Banque',
-    'CETE': 'Cetelem',
-    'COFI': 'Cofidis',
-    'FRAN': 'Franfinance',
-    'SOFI': 'Sofinco',
-    'PSA': 'PSA Banque',
-    'RENA': 'RCI Banque',
-    'BNF': 'BNF Banque',
-    'FLOA': 'Floa Bank',
-    'YOUS': 'Younited Credit',
-    'YOUN': 'Younited Credit',
-    'PRET': 'Pret d\'Union',
-    
-    # ===== BANQUES SPÉCIALISÉES =====
-    'CASDEN': 'Casden Banque Populaire',
-    'CCF': 'Crédit Commercial de France',
-    'BTP': 'Banque BTP',
-    'BTPB': 'Banque BTP',
-    'BFM': 'BFM',
-    'BAIL': 'Crédit Agricole Leasing',
-    
-    # ===== BANQUES DE PROXIMITÉ =====
-    'BPS': 'Banque Populaire du Sud',
-    'BPCA': 'Banque Populaire Côte d\'Azur',
-    'BPAQ': 'Banque Populaire Aquitaine',
-    'BPLR': 'Banque Populaire Loire',
-    'BPRA': 'Banque Populaire Rhône-Alpes',
-    'BPIDF': 'Banque Populaire IDF',
-    'BPMED': 'Banque Populaire Méditerranée',
-    'BPCEN': 'Banque Populaire Centre',
-    'BPNOR': 'Banque Populaire Nord',
-    'BPOU': 'Banque Populaire Ouest',
-    
-    # ===== AUTRES BANQUES =====
-    'CERA': 'CERA',
-    'CER': 'CER',
-    'CEF': 'CEF',
-    'CEI': 'CEI',
-    'CEL': 'CEL',
-    'BCC': 'Banque Courtois',
-    'BCP': 'Banque Châtelain Patrimoine',
-    'BSP': 'Banque de Savoie',
-    'BML': 'Banque Martin Maurel',
-    'BMM': 'Banque Martin Maurel',
-    'BL': 'Banque Laydernier',
-    'CDM': 'Crédit du Maroc',
-    'BIA': 'Banque Internationale',
-    'BGF': 'BGFI Bank',
-    'BGFIBANK': 'BGFI Bank',
-    'BOA': 'Bank of Africa',
-    'BOAD': 'Banque Ouest Africaine',
-    'BRS': 'Banque de la Réunion',
-    'BMAO': 'Banque Malienne',
-    'BICIS': 'BICIS',
-    'SGB': 'Société Générale Burkina',
-    'SGC': 'Société Générale Cameroun',
-    'SGG': 'Société Générale Guinée',
-    'SGCI': 'Société Générale Côte d\'Ivoire',
-    'SGS': 'Société Générale Sénégal',
-    'BICIG': 'BICIG Gabon',
-    'BICIAB': 'BICIAB',
-    'UBAC': 'UBA Cameroon',
-    'UBA': 'UBA',
-    'ECOBANK': 'Ecobank',
-    'ATTIJARI': 'Attijariwafa Bank',
-    'BMC': 'Banque Marocaine',
-    'CIH': 'CIH Bank',
-    'BMCI': 'BMCI',
-    'CAM': 'Crédit Agricole Maroc',
-    'SGMB': 'Société Générale Maroc',
-    'BCP': 'Banque Centrale Populaire',
-    'CIB': 'CIB',
-    'BNA': 'Banque Nationale Agricole',
-    'BH': 'BH Bank',
-    'STB': 'STB',
-    'UBCI': 'UBCI',
-    'BIAT': 'BIAT',
-    'ATB': 'ATB',
+    # Autres
+    'PAYP': 'PayPal',
 }
 
 OPERATEURS = {
